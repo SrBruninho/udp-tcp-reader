@@ -36,15 +36,22 @@ The goal is to simulate reading packets received from different devices (e.g., t
 udp-tcp-reader/
 ├── src/
 │ ├── main/
-│ │ ├── java/br/com/example/udptcpreader/
-│ │ │ ├── UdpServer.java
-│ │ │ ├── TcpServer.java
+│ │ ├── java/br/com/gora/udptcpreader/
+│ │ │ ├── config
+│ │ │ │ ├── FF4JConfig.java
+│ │ │ │ ├── WebClientConfig.java
+│ │ │ ├── dto
+│ │ │ │ ├── DeviceMessageDTO.java
 │ │ │ ├── parser/
+│ │ │ │ ├── manufacturers/
+│ │ │ │ │ ├── Manufacturer.java
+│ │ │ │ │ └── ManufacturerAParser.java
 │ │ │ │ ├── MessageParser.java
-│ │ │ │ ├── TrackerAParser.java
+│ │ │ │ ├── ParserFactory .java
 │ │ │ │ └── TrackerBParser.java
-│ │ │ └── model/
-│ │ │ └── DeviceMessage.java
+│ │ │ └── service/
+│ │ │ │ │ ├── DataProcessorService.java
+│ │ │ │ │ └── GeocodingService.java
 │ │ └── resources/
 │ │ └── application.yml
 │ └── test/
