@@ -2,6 +2,7 @@ package com.gora.udptcpreader;
 
 import com.gora.udptcpreader.dto.DeviceMessageDTO;
 import com.gora.udptcpreader.service.DataProcessorService;
+import com.gora.udptcpreader.service.GeocodingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,12 +14,14 @@ import static ch.qos.logback.core.encoder.ByteArrayUtil.hexStringToByteArray;
 public class SimulationRunner implements CommandLineRunner {
 
     private final DataProcessorService dataProcessorService;
+    private final GeocodingService geocodingService;
 
     @Override
     public void run(String... args) throws Exception {
-                String hex = "4D616E75666163747572657241000003E941BC000042366666003C0000000068E05B75";
+                String hex = "4D616E75666163747572657241000003E941BC000042366666003C0000000068E05B75\n";
 
-        DeviceMessageDTO manufacturerA = dataProcessorService.run(hexStringToByteArray(hex));
-        System.out.println(manufacturerA);
+        DeviceMessageDTO manufacturer = dataProcessorService.run(hexStringToByteArray(hex));
+        System.out.println(manufacturer);
+        System.out.println(geocodingService.getAddress(manufacturer.getLatitude(), manufacturer.getLongitude()));
     }
 }

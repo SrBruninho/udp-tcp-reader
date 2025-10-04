@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 import static com.gora.udptcpreader.parser.manufacturers.Manufacturer.MANUFACTURER_A;
@@ -15,8 +16,10 @@ public class ManufacturerAParser implements MessageParser {
 
     @Override
     public DeviceMessageDTO parseData(byte[] data) {
+        int headerLength = "ManufacturerA".getBytes(StandardCharsets.US_ASCII).length;
+
         ByteBuffer byteBuffer = ByteBuffer
-                .wrap(data)
+                .wrap(data, headerLength, data.length - headerLength)
                 .order(ByteOrder.BIG_ENDIAN);
 
         return DeviceMessageDTO
