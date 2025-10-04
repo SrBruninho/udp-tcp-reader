@@ -48,7 +48,6 @@ udp-tcp-reader/
 │ │ │ │ │ └── ManufacturerAParser.java
 │ │ │ │ ├── MessageParser.java
 │ │ │ │ ├── ParserFactory .java
-│ │ │ │ └── TrackerBParser.java
 │ │ │ └── service/
 │ │ │ │ │ ├── DataProcessorService.java
 │ │ │ │ │ └── GeocodingService.java
